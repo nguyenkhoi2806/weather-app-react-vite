@@ -1,15 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 
-import Home from '@/pages/Home';
 import NotFound from '@/pages/NotFound';
 
+import MainRoutes from './MainRoutes';
+
 const AppRoute = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
+  return useRoutes([MainRoutes, { path: '*', element: <NotFound /> }]);
 };
 
 export default AppRoute;
