@@ -13,11 +13,15 @@ module.exports = {
   ],
   overrides: [
     {
-      files: ['*-spec.ts', '*.spec.tsx'],
+      files: ['*-spec.ts', '*.spec.tsx', 'postcss.config.js'],
+      rules: {
+        'no-undef': 'off',
+      },
     },
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: './tsconfig.json',
@@ -36,4 +40,5 @@ module.exports = {
     ],
     'import/extensions': 0,
   },
+  ignorePatterns: ['tailwind.config.js', 'postcss.config.js'],
 };
