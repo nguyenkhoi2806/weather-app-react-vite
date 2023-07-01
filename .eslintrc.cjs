@@ -28,6 +28,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier', 'simple-import-sort'],
   rules: {
+    'import/no-absolute-path': 0,
     'react/react-in-jsx-scope': 0,
     'import/no-extraneous-dependencies': 0,
     'simple-import-sort/imports': 'error',

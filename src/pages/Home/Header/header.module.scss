@@ -1,0 +1,7 @@
+.home-header {
+  @apply flex justify-between;
+
+  &__time {
+    @apply text-white text-sm font-bold;
+  }
+}

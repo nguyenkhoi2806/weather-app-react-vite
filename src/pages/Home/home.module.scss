@@ -1,0 +1,6 @@
+.home-container {
+  @apply m-auto container pt-6  rounded p-5;
+  max-width: 1000px;
+  box-shadow: rgba(200, 200, 200, 0.3) 0px 1px 2px 0px,
+    rgba(200, 200, 200, 0.15) 0px 1px 3px 1px;
+}

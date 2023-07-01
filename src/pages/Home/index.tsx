@@ -1,5 +1,12 @@
+import Header from './Header';
+import StyleHomes from './home.module.scss';
+
 const Home = () => {
-  return <h1>Hello World</h1>;
+  return (
+    <div className={StyleHomes['home-container']}>
+      <Header />
+    </div>
+  );
 };
 
 export default Home;
