@@ -4,6 +4,7 @@ import Style from './clock.module.scss';
 
 const Clock = () => {
   const [time, setTime] = useState({
+    date: new Date(),
     minutes: new Date().getMinutes(),
     hours: new Date().getHours(),
     seconds: new Date().getSeconds(),
@@ -12,6 +13,7 @@ const Clock = () => {
     const intervalId = setInterval(() => {
       const date = new Date();
       setTime({
+        date,
         minutes: date.getMinutes(),
         hours: date.getHours(),
         seconds: date.getSeconds(),
@@ -29,7 +31,7 @@ const Clock = () => {
 
   return (
     <div className={Style.clock}>
-      <span className="mr-2">{new Date().toDateString()}</span>
+      <span className="mr-2">{time.date.toDateString()}</span>
       <span>{convertToTwoDigit(time.hours)}:</span>
       <span>{convertToTwoDigit(time.minutes)}:</span>
       <span>{convertToTwoDigit(time.seconds)}</span>
