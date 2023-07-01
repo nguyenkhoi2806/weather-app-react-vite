@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import Logo from '/images/logo.png';
+import Clock from '@/components/Clock';
 
 import Style from './header.module.scss';
 
@@ -8,7 +9,9 @@ const Header = () => {
   return (
     <div className={Style['home-header']}>
       <img src={Logo} alt="logo" width={100} />
-      <span className={Style['home-header__time']}>2023-07-01 11:00 GMT</span>
+      <span className={Style['home-header__time']}>
+        <Clock />
+      </span>
       <Link
         to="https://github.com/nguyenkhoi2806/weather-app-react-vite"
         target="_blank"

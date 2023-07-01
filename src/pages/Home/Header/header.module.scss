@@ -1,7 +1,8 @@
 .home-header {
-  @apply flex justify-between;
+  @apply flex justify-between align-middle items-center;
 
   &__time {
     @apply text-white text-sm font-bold;
+    width: 30%;
   }
 }
