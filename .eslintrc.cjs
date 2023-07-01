@@ -41,6 +41,7 @@ module.exports = {
     ],
     'import/extensions': 0,
     'import/prefer-default-export': 0,
+    'jsx-a11y/label-has-associated-control': 0,
   },
   ignorePatterns: ['tailwind.config.js', 'postcss.config.js'],
 };
