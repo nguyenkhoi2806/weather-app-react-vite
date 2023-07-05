@@ -31,7 +31,7 @@ const Clock = () => {
 
   return (
     <div className={Style.clock}>
-      <span className="mr-2">{time.date.toDateString()}</span>
+      <span className={Style.clock__time}>{time.date.toDateString()}</span>
       <span>{convertToTwoDigit(time.hours)}:</span>
       <span>{convertToTwoDigit(time.minutes)}:</span>
       <span>{convertToTwoDigit(time.seconds)}</span>

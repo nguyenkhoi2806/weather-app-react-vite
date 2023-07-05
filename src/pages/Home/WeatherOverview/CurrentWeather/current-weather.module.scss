@@ -1,0 +1,14 @@
+.current-weather {
+  color: white;
+  @apply flex justify-between align-middle items-center mb-20;
+
+  &__item {
+    @apply flex flex-col align-middle;
+
+    &-time {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: 'Roboto Condensed';
+    }
+  }
+}

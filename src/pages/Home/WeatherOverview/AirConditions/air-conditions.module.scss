@@ -1,0 +1,20 @@
+.air-condition {
+  @apply flex justify-between mt-5;
+  color: white;
+
+  &__item {
+    font-family: 'Poppins';
+    @apply flex flex-col gap-4 align-middle justify-center;
+
+    &-title {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      padding-left: 6px;
+    }
+
+    &-content {
+      @apply font-bold;
+      font-size: 16px;
+    }
+  }
+}

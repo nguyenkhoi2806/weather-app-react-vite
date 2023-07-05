@@ -1,0 +1,16 @@
+.weather-container {
+  @apply flex justify-between;
+
+  &__current,
+  &__weekly {
+    @apply w-2/4;
+    text-align: center;
+
+    &-title {
+      @apply font-bold uppercase;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      font-family: 'Roboto Condensed';
+    }
+  }
+}
