@@ -1,16 +1,20 @@
 .weather-container {
-  @apply flex justify-between;
+  @apply md:flex justify-between;
 
   &__current,
   &__weekly {
-    @apply w-2/4;
+    @apply sm:w-full md:w-2/4;
     text-align: center;
 
     &-title {
       @apply font-bold uppercase;
-      font-size: 18px;
+      font-size: 12px;
       color: rgba(255, 255, 255, 0.7);
       font-family: 'Roboto Condensed';
+
+      @media screen and (min-width: 600px) {
+        font-size: 18px;
+      }
     }
   }
 }

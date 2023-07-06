@@ -5,6 +5,18 @@
   color: rgba(255, 255, 255, 0.7);
 
   &__time {
-    @apply mr-2;
+    @apply mr-2 hidden;
+
+    @media screen and (min-width: 600px) {
+      @apply block;
+    }
+  }
+
+  span {
+    font-size: 10px;
+
+    @media screen and (min-width: 600px) {
+      font-size: 14px;
+    }
   }
 }

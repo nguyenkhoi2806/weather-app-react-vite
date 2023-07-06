@@ -1,14 +1,28 @@
 .current-weather {
   color: white;
-  @apply flex justify-between align-middle items-center mb-20;
+  @apply flex justify-between align-middle items-center mb-5 lg:mb-20;
 
   &__item {
     @apply flex flex-col align-middle;
+    span {
+      font-size: 12px;
+
+      @media screen and (min-width: 600px) {
+        font-size: 16px;
+      }
+    }
 
     &-time {
-      font-size: 14px;
+      @apply text-sm;
       color: rgba(255, 255, 255, 0.7);
       font-family: 'Roboto Condensed';
+    }
+  }
+
+  img {
+    width: 50px;
+    @media screen and (min-width: 600px) {
+      width: 70px;
     }
   }
 }

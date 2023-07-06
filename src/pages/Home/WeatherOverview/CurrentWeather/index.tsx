@@ -10,13 +10,13 @@ const CurrentWeather = () => {
         <span className={Style['current-weather__item-time']}>Today 5 Jul</span>
       </div>
       <div className={Style['current-weather__item']}>
-        <span>19 °C</span>
+        <span className="font-bold">19 °C</span>
         <span className={Style['current-weather__item-time']}>
           overcast clouds
         </span>
       </div>
       <div className={Style['current-weather__item']}>
-        <img src={cloud} width={70} alt="weather" />
+        <img src={cloud} alt="weather" />
       </div>
     </div>
   );

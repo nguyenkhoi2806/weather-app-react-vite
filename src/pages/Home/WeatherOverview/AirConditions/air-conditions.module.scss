@@ -1,5 +1,5 @@
 .air-condition {
-  @apply flex justify-between mt-5 mb-20;
+  @apply flex justify-between mt-5 mb-5 lg:mb-20;
   color: white;
 
   &__item {
@@ -7,15 +7,24 @@
     @apply flex flex-col gap-4 align-middle justify-center;
 
     &-title {
-      @apply flex align-middle justify-center items-center;
+      @apply flex align-middle justify-center  flex-col lg:flex-row items-center gap-2;
       color: rgba(255, 255, 255, 0.7);
       font-size: 14px;
       padding-left: 6px;
+      font-size: 12px;
+
+      @media screen and (min-width: 600px) {
+        font-size: 16px;
+      }
     }
 
     &-content {
       @apply font-bold;
-      font-size: 16px;
+      font-size: 13px;
+
+      @media screen and (min-width: 600px) {
+        font-size: 16px;
+      }
     }
   }
 }
