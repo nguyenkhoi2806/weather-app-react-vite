@@ -48,6 +48,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    'react/no-unescaped-entities': 0,
   },
   ignorePatterns: ['tailwind.config.js', 'postcss.config.js'],
 };

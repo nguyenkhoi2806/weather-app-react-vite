@@ -1,5 +1,6 @@
 import AirCondition from './AirConditions';
 import CurrentWeather from './CurrentWeather';
+import TodayForecast from './TodayForecast';
 import Style from './weather-overview.module.scss';
 
 const WeatherOverview = () => {
@@ -14,6 +15,10 @@ const WeatherOverview = () => {
           Air Condition
         </span>
         <AirCondition />
+        <span className={Style['weather-container__current-title']}>
+          Today's forecast
+        </span>
+        <TodayForecast />
       </div>
       <div className={Style['weather-container__weekly']}>
         <span className={Style['weather-container__weekly-title']}>
