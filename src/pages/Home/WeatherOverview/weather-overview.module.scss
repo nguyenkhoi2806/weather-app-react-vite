@@ -1,5 +1,16 @@
 .weather-container {
   @apply md:flex justify-between;
+  &__current {
+    @media screen and (min-width: 600px) {
+      @apply md:pr-6;
+    }
+  }
+
+  &__weekly {
+    @media screen and (min-width: 600px) {
+      @apply md:pl-6;
+    }
+  }
 
   &__current,
   &__weekly {
@@ -15,6 +26,11 @@
       @media screen and (min-width: 600px) {
         font-size: 18px;
       }
+    }
+  }
+  &__weekly {
+    &-list {
+      margin-top: 20px;
     }
   }
 }
