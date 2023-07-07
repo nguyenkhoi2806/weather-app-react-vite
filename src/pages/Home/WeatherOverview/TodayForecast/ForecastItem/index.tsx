@@ -6,7 +6,7 @@ const ForecastItem = () => {
   return (
     <div className={Style['today-forecast__item']}>
       <span className={Style['today-forecast__item-time']}>18:00</span>
-      <BsCloudLightningRainFill size={34} />
+      <BsCloudLightningRainFill />
       <span className={Style['today-forecast__item-temperature']}>23 °C</span>
     </div>
   );

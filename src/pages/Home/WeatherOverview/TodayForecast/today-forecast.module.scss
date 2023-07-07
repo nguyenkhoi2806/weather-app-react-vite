@@ -22,18 +22,29 @@
 
     svg {
       @apply m-auto;
+      font-size: 15px;
+      @media screen and (min-width: 600px) {
+        font-size: 34px;
+      }
     }
 
     &-time {
       display: block;
-      font-size: 12px;
       margin-bottom: 10px;
+      font-size: 10px;
+
+      @media screen and (min-width: 600px) {
+        font-size: 12px;
+      }
     }
 
     &-temperature {
       @apply font-bold block;
       margin-top: 10px;
-      font-size: 14px;
+      font-size: 12px;
+      @media screen and (min-width: 600px) {
+        font-size: 14px;
+      }
     }
   }
 }
