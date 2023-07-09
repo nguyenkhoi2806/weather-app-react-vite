@@ -11,6 +11,7 @@ import StyleHomes from './home.module.scss';
 import HomeReducer, {
   initialState,
   UPDATE_CITY_LIST,
+  UPDATE_CURRENT_WEATHER,
   UPDATE_LOADING_WEATHER,
   UPDATE_SEARCH_TEXT,
 } from './reducer';
@@ -18,7 +19,7 @@ import WeatherOverview from './WeatherOverview';
 
 const Home = () => {
   const [state, dispatch] = useReducer(HomeReducer, initialState);
-  const { searchText, citiesList, isLoadingWeather } = state;
+  const { searchText, citiesList, isLoadingWeather, currentWeather } = state;
 
   const searchTextWithDebounced = useDebounce(searchText, 500);
 
@@ -50,11 +51,22 @@ const Home = () => {
     const [latitude, longitude] = location.value.split(' ');
     dispatch({ type: UPDATE_LOADING_WEATHER, payload: true });
     const [todayWeatherResponse, weekForecastResponse] = await fetchWeatherData(
-      latitude,
-      longitude
+      Number(latitude),
+      Number(longitude)
     );
-    console.log(todayWeatherResponse);
-    console.log(weekForecastResponse);
+
+    dispatch({
+      type: UPDATE_CURRENT_WEATHER,
+      payload: {
+        city: location.label,
+        temperature: todayWeatherResponse.main.feels_like,
+        icon: todayWeatherResponse.weather[0].icon,
+        description: todayWeatherResponse.weather[0].description,
+      },
+    });
+    // console.log(todayWeatherResponse);
+    // console.log(weekForecastResponse);
+    dispatch({ type: UPDATE_LOADING_WEATHER, payload: false });
   };
 
   return (
@@ -67,7 +79,11 @@ const Home = () => {
         inputValue={searchText}
         className="my-5"
       />
-      <WeatherOverview isLoading={isLoadingWeather} />
+
+      <WeatherOverview
+        isLoading={isLoadingWeather}
+        currentWeather={currentWeather}
+      />
     </div>
   );
 };

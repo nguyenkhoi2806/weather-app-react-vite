@@ -50,6 +50,7 @@ module.exports = {
     ],
     'react/no-unescaped-entities': 0,
     '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/naming-convention': 0,
   },
   ignorePatterns: ['tailwind.config.js', 'postcss.config.js'],
 };

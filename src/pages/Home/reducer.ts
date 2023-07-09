@@ -1,6 +1,9 @@
+import CurrentWeather from '@/interfaces/CurrentWeather';
+
 export const UPDATE_CITY_LIST = 'UPDATE_CITY_LIST';
 export const UPDATE_SEARCH_TEXT = 'UPDATE_SEARCH_TEXT';
 export const UPDATE_LOADING_WEATHER = 'UPDATE_LOADING_WEATHER';
+export const UPDATE_CURRENT_WEATHER = 'UPDATE_CURRENT_WEATHER';
 
 interface HomeState {
   isLoadingWeather: boolean;
@@ -9,12 +12,14 @@ interface HomeState {
     value: string;
     label: string;
   }[];
+  currentWeather: CurrentWeather | null;
 }
 
 export const initialState: HomeState = {
   isLoadingWeather: false,
   searchText: '',
   citiesList: [],
+  currentWeather: null,
 };
 
 type HomeActions = {
@@ -40,6 +45,13 @@ const homeReducer = (state: HomeState, action: HomeActions) => {
       return {
         ...state,
         isLoadingWeather: action.payload,
+      };
+    }
+
+    case UPDATE_CURRENT_WEATHER: {
+      return {
+        ...state,
+        currentWeather: action.payload,
       };
     }
     default: {
