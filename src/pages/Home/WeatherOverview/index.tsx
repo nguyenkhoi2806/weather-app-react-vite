@@ -1,10 +1,26 @@
+import Loading from '@/components/Loading';
+
 import AirCondition from './AirConditions';
 import CurrentWeather from './CurrentWeather';
 import TodayForecast from './TodayForecast';
 import Style from './weather-overview.module.scss';
 import Weekly from './Weekly';
 
-const WeatherOverview = () => {
+interface WeatherOverviewProps {
+  isLoading: boolean;
+}
+
+const WeatherOverview = (props: WeatherOverviewProps) => {
+  const { isLoading } = props;
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center">
+        <Loading />
+      </div>
+    );
+  }
+
   return (
     <div className={Style['weather-container']}>
       <div className={Style['weather-container__current']}>

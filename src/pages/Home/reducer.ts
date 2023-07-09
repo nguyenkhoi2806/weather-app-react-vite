@@ -1,8 +1,9 @@
 export const UPDATE_CITY_LIST = 'UPDATE_CITY_LIST';
 export const UPDATE_SEARCH_TEXT = 'UPDATE_SEARCH_TEXT';
+export const UPDATE_LOADING_WEATHER = 'UPDATE_LOADING_WEATHER';
 
 interface HomeState {
-  isLoading: boolean;
+  isLoadingWeather: boolean;
   searchText: string;
   citiesList: {
     value: string;
@@ -11,7 +12,7 @@ interface HomeState {
 }
 
 export const initialState: HomeState = {
-  isLoading: false,
+  isLoadingWeather: false,
   searchText: '',
   citiesList: [],
 };
@@ -33,6 +34,12 @@ const homeReducer = (state: HomeState, action: HomeActions) => {
       return {
         ...state,
         searchText: action.payload,
+      };
+    }
+    case UPDATE_LOADING_WEATHER: {
+      return {
+        ...state,
+        isLoadingWeather: action.payload,
       };
     }
     default: {

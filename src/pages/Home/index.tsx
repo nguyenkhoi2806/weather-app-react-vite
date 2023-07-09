@@ -2,6 +2,7 @@ import { useCallback, useEffect, useReducer } from 'react';
 import Select from 'react-select';
 
 import { getCities } from '@/api/location';
+import { fetchWeatherData } from '@/api/weather';
 import useDebounce from '@/hooks/useDebounce';
 import City from '@/interfaces/City';
 
@@ -10,13 +11,15 @@ import StyleHomes from './home.module.scss';
 import HomeReducer, {
   initialState,
   UPDATE_CITY_LIST,
+  UPDATE_LOADING_WEATHER,
   UPDATE_SEARCH_TEXT,
 } from './reducer';
 import WeatherOverview from './WeatherOverview';
 
 const Home = () => {
   const [state, dispatch] = useReducer(HomeReducer, initialState);
-  const { searchText, citiesList } = state;
+  const { searchText, citiesList, isLoadingWeather } = state;
+
   const searchTextWithDebounced = useDebounce(searchText, 500);
 
   const loadCities = useCallback(async () => {
@@ -44,7 +47,14 @@ const Home = () => {
   }, [searchTextWithDebounced, loadCities]);
 
   const viewWeatherDetail = async (location: any) => {
-    console.log(location);
+    const [latitude, longitude] = location.value.split(' ');
+    dispatch({ type: UPDATE_LOADING_WEATHER, payload: true });
+    const [todayWeatherResponse, weekForecastResponse] = await fetchWeatherData(
+      latitude,
+      longitude
+    );
+    console.log(todayWeatherResponse);
+    console.log(weekForecastResponse);
   };
 
   return (
@@ -57,7 +67,7 @@ const Home = () => {
         inputValue={searchText}
         className="my-5"
       />
-      <WeatherOverview />
+      <WeatherOverview isLoading={isLoadingWeather} />
     </div>
   );
 };
