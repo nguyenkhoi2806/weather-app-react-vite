@@ -1,4 +1,4 @@
-import cloud from '/images/few_cloud.png';
+import cloud from '/icons/01d.png';
 
 import Style from './current-weather.module.scss';
 
