@@ -43,12 +43,17 @@ const Home = () => {
     loadCities();
   }, [searchTextWithDebounced, loadCities]);
 
+  const viewWeatherDetail = async (location: any) => {
+    console.log(location);
+  };
+
   return (
     <div className={StyleHomes['home-container']}>
       <Header />
       <Select
         options={citiesList}
         onInputChange={searchCities}
+        onChange={viewWeatherDetail}
         inputValue={searchText}
         className="my-5"
       />
