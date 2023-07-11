@@ -3,6 +3,7 @@ import { WiDayFog } from 'react-icons/wi';
 import Loading from '@/components/Loading';
 import AirConditionModel from '@/interfaces/AirCondition';
 import CurrentWeather from '@/interfaces/CurrentWeather';
+import Forecast from '@/interfaces/Forecast';
 
 import AirCondition from './AirConditions';
 import CurrentWeatherOverView from './CurrentWeatherOverView';
@@ -14,15 +15,31 @@ interface WeatherOverviewProps {
   isLoading: boolean;
   currentWeather: CurrentWeather;
   airCondition: AirConditionModel;
+  isError: boolean;
+  forecastTodayList: Forecast[];
 }
 
 const WeatherOverview = (props: WeatherOverviewProps) => {
-  const { isLoading, currentWeather, airCondition } = props;
+  const {
+    isLoading,
+    currentWeather,
+    airCondition,
+    isError,
+    forecastTodayList,
+  } = props;
 
   if (isLoading) {
     return (
       <div className="flex justify-center">
         <Loading />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="flex justify-center">
+        Ops! there is something wrong please try again
       </div>
     );
   }
@@ -51,7 +68,7 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
         <span className={Style['weather-container__current-title']}>
           Today's forecast
         </span>
-        <TodayForecast />
+        <TodayForecast forecastTodayList={forecastTodayList} />
       </div>
       <div className={Style['weather-container__weekly']}>
         <span className={Style['weather-container__weekly-title']}>

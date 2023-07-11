@@ -1,16 +1,23 @@
+import Forecast from '@/interfaces/Forecast';
+
 import ForecastItem from './ForecastItem';
 import Style from './today-forecast.module.scss';
 
-const TodayForecast = () => {
+interface TodayForecastProps {
+  forecastTodayList: Forecast[];
+}
+
+const TodayForecast = (props: TodayForecastProps) => {
+  const { forecastTodayList } = props;
   return (
     <div className={Style['today-forecast']}>
       <span className={Style['today-forecast__available']}>
-        2 available forecasts
+        {forecastTodayList.length} available forecasts
       </span>
       <div className={Style['today-forecast__items']}>
-        <ForecastItem />
-        <ForecastItem />
-        <ForecastItem />
+        {forecastTodayList.map((forecastToday) => (
+          <ForecastItem forecast={forecastToday} key={forecastToday.time} />
+        ))}
       </div>
     </div>
   );
