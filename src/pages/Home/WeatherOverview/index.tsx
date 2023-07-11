@@ -1,6 +1,7 @@
 import { WiDayFog } from 'react-icons/wi';
 
 import Loading from '@/components/Loading';
+import AirConditionModel from '@/interfaces/AirCondition';
 import CurrentWeather from '@/interfaces/CurrentWeather';
 
 import AirCondition from './AirConditions';
@@ -12,10 +13,11 @@ import Weekly from './Weekly';
 interface WeatherOverviewProps {
   isLoading: boolean;
   currentWeather: CurrentWeather;
+  airCondition: AirConditionModel;
 }
 
 const WeatherOverview = (props: WeatherOverviewProps) => {
-  const { isLoading, currentWeather } = props;
+  const { isLoading, currentWeather, airCondition } = props;
 
   if (isLoading) {
     return (
@@ -45,7 +47,7 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
         <span className={Style['weather-container__current-title']}>
           Air Condition
         </span>
-        <AirCondition />
+        <AirCondition airCondition={airCondition} />
         <span className={Style['weather-container__current-title']}>
           Today's forecast
         </span>

@@ -10,6 +10,7 @@ import Header from './Header';
 import StyleHomes from './home.module.scss';
 import HomeReducer, {
   initialState,
+  UPDATE_AIR_CONDITION,
   UPDATE_CITY_LIST,
   UPDATE_CURRENT_WEATHER,
   UPDATE_LOADING_WEATHER,
@@ -19,7 +20,13 @@ import WeatherOverview from './WeatherOverview';
 
 const Home = () => {
   const [state, dispatch] = useReducer(HomeReducer, initialState);
-  const { searchText, citiesList, isLoadingWeather, currentWeather } = state;
+  const {
+    searchText,
+    citiesList,
+    isLoadingWeather,
+    currentWeather,
+    airCondition,
+  } = state;
 
   const searchTextWithDebounced = useDebounce(searchText, 500);
 
@@ -59,12 +66,21 @@ const Home = () => {
       type: UPDATE_CURRENT_WEATHER,
       payload: {
         city: location.label,
-        temperature: todayWeatherResponse.main.feels_like,
+        temperature: todayWeatherResponse.main.temp,
         icon: todayWeatherResponse.weather[0].icon,
         description: todayWeatherResponse.weather[0].description,
       },
     });
-    // console.log(todayWeatherResponse);
+
+    dispatch({
+      type: UPDATE_AIR_CONDITION,
+      payload: {
+        realFeel: todayWeatherResponse.main.feels_like,
+        wind: todayWeatherResponse.wind.speed,
+        clouds: todayWeatherResponse.clouds.all,
+        humidity: todayWeatherResponse.main.humidity,
+      },
+    });
     // console.log(weekForecastResponse);
     dispatch({ type: UPDATE_LOADING_WEATHER, payload: false });
   };
@@ -83,6 +99,7 @@ const Home = () => {
       <WeatherOverview
         isLoading={isLoadingWeather}
         currentWeather={currentWeather}
+        airCondition={airCondition}
       />
     </div>
   );
