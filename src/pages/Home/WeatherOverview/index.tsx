@@ -4,6 +4,7 @@ import Loading from '@/components/Loading';
 import AirConditionModel from '@/interfaces/AirCondition';
 import CurrentWeather from '@/interfaces/CurrentWeather';
 import Forecast from '@/interfaces/Forecast';
+import WeeklyForecast from '@/interfaces/WeeklyForecast';
 
 import AirCondition from './AirConditions';
 import CurrentWeatherOverView from './CurrentWeatherOverView';
@@ -17,6 +18,7 @@ interface WeatherOverviewProps {
   airCondition: AirConditionModel;
   isError: boolean;
   forecastTodayList: Forecast[];
+  weeklyForecastList: WeeklyForecast[];
 }
 
 const WeatherOverview = (props: WeatherOverviewProps) => {
@@ -26,6 +28,7 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
     airCondition,
     isError,
     forecastTodayList,
+    weeklyForecastList,
   } = props;
 
   if (isLoading) {
@@ -38,7 +41,7 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
 
   if (isError) {
     return (
-      <div className="flex justify-center">
+      <div className="flex justify-center text-white h-96 items-center">
         Ops! there is something wrong please try again
       </div>
     );
@@ -75,13 +78,9 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
           WEEKLY FORECAST
         </span>
         <div className={Style['weather-container__weekly-list']}>
-          <Weekly />
-          <Weekly />
-          <Weekly />
-          <Weekly />
-          <Weekly />
-          <Weekly />
-          <Weekly />
+          {weeklyForecastList.map((weeklyItem) => (
+            <Weekly key={weeklyItem.date} weeklyForecast={weeklyItem} />
+          ))}
         </div>
       </div>
     </div>

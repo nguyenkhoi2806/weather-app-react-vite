@@ -50,6 +50,10 @@ export const WeeklyDay = styled.div({
       },
     },
   },
+  '.WeeklyDay__img': {
+    width: '30px',
+    marginRight: '5px',
+  },
 });
 
 export { WeeklyItem };

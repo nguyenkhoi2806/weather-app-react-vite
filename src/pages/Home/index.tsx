@@ -6,6 +6,7 @@ import { fetchWeatherData } from '@/api/weather';
 import useDebounce from '@/hooks/useDebounce';
 import City from '@/interfaces/City';
 import { formatForecastListFromApi } from '@/interfaces/Forecast';
+import { formatWeekForecastWeatherFromApi } from '@/interfaces/WeeklyForecast';
 
 import Header from './Header';
 import StyleHomes from './home.module.scss';
@@ -18,6 +19,7 @@ import HomeReducer, {
   UPDATE_IS_ERROR,
   UPDATE_LOADING_WEATHER,
   UPDATE_SEARCH_TEXT,
+  UPDATE_WEEKLY_FORECAST_LIST,
 } from './reducer';
 import WeatherOverview from './WeatherOverview';
 
@@ -31,6 +33,7 @@ const Home = () => {
     airCondition,
     isError,
     forecastTodayList,
+    weeklyForecastList,
   } = state;
 
   const searchTextWithDebounced = useDebounce(searchText, 500);
@@ -90,10 +93,16 @@ const Home = () => {
         type: UPDATE_FORECAST_LIST,
         payload: formatForecastListFromApi(weekForecastResponse),
       });
+
+      dispatch({
+        type: UPDATE_WEEKLY_FORECAST_LIST,
+        payload: formatWeekForecastWeatherFromApi(weekForecastResponse),
+      });
       // console.log(weekForecastResponse);
       dispatch({ type: UPDATE_LOADING_WEATHER, payload: false });
     } catch (_) {
-      dispatch({ type: UPDATE_IS_ERROR, payload: false });
+      dispatch({ type: UPDATE_LOADING_WEATHER, payload: false });
+      dispatch({ type: UPDATE_IS_ERROR, payload: true });
     }
   };
 
@@ -113,6 +122,7 @@ const Home = () => {
         airCondition={airCondition}
         forecastTodayList={forecastTodayList}
         isError={isError}
+        weeklyForecastList={weeklyForecastList}
       />
     </div>
   );
