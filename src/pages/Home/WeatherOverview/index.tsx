@@ -49,7 +49,7 @@ const WeatherOverview = (props: WeatherOverviewProps) => {
 
   if (!currentWeather) {
     return (
-      <span className="text-white flex justify-center flex-col items-center h-96 text-center ">
+      <span className="text-white flex justify-center flex-col items-center h-96 text-center text-sm md:text-lg">
         <WiDayFog size={100} className="mb-10" />
         Explore current weather data and 6-day forecast of more than 200,000
         cities!
