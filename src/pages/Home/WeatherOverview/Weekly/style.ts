@@ -9,7 +9,7 @@ const WeeklyItem = styled.div({
   borderRadius: '8px',
   display: 'fex',
   alignItems: 'center',
-  marginBottom: '20px',
+  marginBottom: '10px',
 });
 
 export const WeeklyDay = styled.div({
