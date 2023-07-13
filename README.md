@@ -30,4 +30,4 @@ This app base on this layout and feature from [this app](https://the-weather-for
 
 ## 💻 Live Demo
 
-<https://vercel.com/nguyenkhoi2806/weather-app-react-vite>
+<https://weather-app-react-vite-black.vercel.app/>
